@@ -21,10 +21,13 @@ class Candidato implements Pessoa {
         for (def candidato : candidatos) {
             println("-----Candidato------")
             candidato.each { chave, valor ->
-                println("$chave: $valor")
+                if (chave == "competencias") {
+                    println("$chave: ${(valor as List<String>).join(', ')}")
+                } else {
+                    println("$chave: $valor")
+                }
             }
             println("-------------------------------------------------------")
         }
     }
-
 }

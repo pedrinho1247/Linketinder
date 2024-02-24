@@ -1,4 +1,4 @@
-class Empresa implements Pessoa{
+class Empresa implements Pessoa {
 
     String nome
     String emailCorporativo
@@ -19,11 +19,15 @@ class Empresa implements Pessoa{
     def listarGeral() {
         for (def empresa : empresas) {
             println("-----Empresa------")
+            println(empresas)
             empresa.each { chave, valor ->
-                println("$chave: $valor")
+                if (chave == "competencias desejadas") {
+                    println("$chave: ${(valor as List<String>).join(', ')}")
+                } else {
+                    println("$chave: $valor")
+                }
             }
             println("-------------------------------------------------------")
         }
     }
-
 }
