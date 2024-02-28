@@ -19,7 +19,6 @@ class Empresa implements Pessoa {
     def listarGeral() {
         for (def empresa : empresas) {
             println("-----Empresa------")
-            println(empresas)
             empresa.each { chave, valor ->
                 if (chave == "competencias desejadas") {
                     println("$chave: ${(valor as List<String>).join(', ')}")
