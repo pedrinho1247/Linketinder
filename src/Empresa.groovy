@@ -7,26 +7,14 @@ class Empresa implements Pessoa {
     String estado
     String cep
     String descricao
-    List<Map<String, Object>> empresas = []
 
-    //Método cadastrar, recebe um Map e insere na lista empresas
-    @Override
-    void cadastrar(Map<String, Object> dadosCandidato) {
-        empresas << dadosCandidato
-    }
-
-    @Override
-    def listarGeral() {
-        for (def empresa : empresas) {
-            println("-----Empresa------")
-            empresa.each { chave, valor ->
-                if (chave == "competencias desejadas") {
-                    println("$chave: ${(valor as List<String>).join(', ')}")
-                } else {
-                    println("$chave: $valor")
-                }
-            }
-            println("-------------------------------------------------------")
-        }
+    Empresa(String nome, String emailCorporativo, String cnpj, String pais, String estado, String cep, String descricao) {
+        this.nome = nome
+        this.emailCorporativo = emailCorporativo
+        this.cnpj = cnpj
+        this.pais = pais
+        this.estado = estado
+        this.cep = cep
+        this.descricao = descricao
     }
 }

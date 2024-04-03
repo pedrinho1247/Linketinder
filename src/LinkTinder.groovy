@@ -1,38 +1,29 @@
 class LinkTinderMain {
 
     def sc = new Scanner(System.in)
-    def candidato = new Candidato()
-    def empresa = new Empresa()
+
+    List<Candidato> candidatos = []
+    List<Empresa> empresas = []
 
     LinkTinderMain() {
 
         // Pré-cadastrando 5 candidatos
 
-        def dadosCandidatos = [
-                [nome: "Maria", email: "maria@example.com", cpf: "123.456.789-00", idade: 30, estado: "SP", cep: "12345-678", descricao: "Descrição do candidato 1", competencias:["Python", "Java", "Angular"]],
-                [nome: "Pedro", email: "pedro@example.com", cpf: "987.654.321-00", idade: 25, estado: "RJ", cep: "54321-987", descricao: "Descrição do candidato 2", competencias:["Java", "Angular"]],
-                [nome: "Isabelle", email: "isabelle@example.com", cpf: "456.789.123-00", idade: 35, estado: "MG", cep: "98765-432", descricao: "Descrição do candidato 3", competencias:["Python", "Java", "Angular"]],
-                [nome: "João", email: "joao@example.com", cpf: "789.123.456-00", idade: 28, estado: "BA", cep: "87654-321", descricao: "Descrição do candidato 4", competencias:[ "Angular"]],
-                [nome: "Camilla", email: "camilla@example.com", cpf: "321.654.987-00", idade: 33, estado: "PR", cep: "76543-210", descricao: "Descrição do candidato 5", competencias:["Python",]]
-        ]
-
-        dadosCandidatos.each { dados ->
-            candidato.cadastrar(dados)
-        }
+        candidatos << new Candidato("Maria", "maria@example.com", "123.456.789-00", 30, "SP", "12345-678", "Descrição do candidato 1")
+        candidatos << new Candidato("Pedro", "pedro@example.com", "987.654.321-00", 25, "RJ", "54321-987", "Descrição do candidato 2")
+        candidatos << new Candidato("Isabelle", "isabelle@example.com", "456.789.123-00", 35, "MG", "98765-432", "Descrição do candidato 3")
+        candidatos << new Candidato("Lucas", "lucas@example.com", "321.654.987-00", 28, "BA", "87654-321", "Descrição do candidato 4")
+        candidatos << new Candidato("Julia", "julia@example.com", "789.123.456-00", 22, "PR", "76543-210", "Descrição do candidato 5")
 
         // Pré-cadastrando 5 empresas
 
-        def empresas = [
-                [nome: "Empresa 1", emailCorporativo: "empresa1@example.com", cnpj: "123456789", pais: "Brasil", estado: "SP", cep: "12345-678", descricao: "Descrição da Empresa 1", "competencias desejadas":["Python", "Java", "Angular"]],
-                [nome: "Empresa 2", emailCorporativo: "empresa2@example.com", cnpj: "987654321", pais: "Brasil", estado: "RJ", cep: "98765-432", descricao: "Descrição da Empresa 2", "competencias desejadas":["Python"]],
-                [nome: "Empresa 3", emailCorporativo: "empresa3@example.com", cnpj: "456789123", pais: "Brasil", estado: "MG", cep: "54321-987", descricao: "Descrição da Empresa 3", "competencias desejadas":["Java", "Angular"]],
-                [nome: "Empresa 4", emailCorporativo: "empresa4@example.com", cnpj: "789123456", pais: "Brasil", estado: "BA", cep: "87654-321", descricao: "Descrição da Empresa 4", "competencias desejadas":["Java"]],
-                [nome: "Empresa 5", emailCorporativo: "empresa5@example.com", cnpj: "321654987", pais: "Brasil", estado: "PR", cep: "76543-210", descricao: "Descrição da Empresa 5", "competencias desejadas":["Python","Angular"]]
-        ]
+        empresas << new Empresa("Empresa 1","empresa1@teste.com","12345678901234","Brasil","SP","12345-678","Descrição da Empresa 1")
+        empresas << new Empresa("Empresa 2","empresa2@teste.com","98765432109876","Brasil","RJ","54321-987","Descrição da Empresa 2")
+        empresas << new Empresa("Empresa 3","empresa3@teste.com","45678912345678","Brasil","MG","98765-432","Descrição da Empresa 3")
+        empresas << new Empresa("Empresa 4","empresa4@teste.com","32165498765432","Brasil","BA","87654-321","Descrição da Empresa 4")
+        empresas << new Empresa("Empresa 5","empresa5@teste.com","78912345678901","Brasil","PR","76543-210","Descrição da Empresa 5")
 
-        empresas.each { dados ->
-            empresa.cadastrar(dados)
-        }
+        // Inicializando o programa
 
         try {
             while (true) {
@@ -50,8 +41,8 @@ class LinkTinderMain {
                 sc.nextLine()
 
                 switch (opcao) {
-                    case 1:
 
+                    case 1:
                         def dados1 = [
                                 nome: "",
                                 email: "",
@@ -59,60 +50,101 @@ class LinkTinderMain {
                                 idade: "",
                                 estado: "",
                                 cep: "",
-                                descricao: "",
-                                competencias: []
+                                descricao: ""
                         ]
-
                         dados1.each { chave, valor ->
-                            if (chave == "competencias") {
-                                println("$chave:")
-                                dados1[chave] = sc.nextLine().split(", ") // Entrada separada por vírgula
-                            } else {
-                                println("$chave:")
-                                dados1[chave] = sc.nextLine()
-                            }
+                            println("$chave:")
+                            dados1[chave] = sc.nextLine()
                         }
-                        
-                        candidato.cadastrar(dados1)
+                        candidatos << new Candidato(
+                                dados1.nome,
+                                dados1.email,
+                                dados1.cpf,
+                                dados1.idade.toInteger(),
+                                dados1.estado,
+                                dados1.cep,
+                                dados1.descricao
+                        )
                         break
 
                     case 2:
 
-                        def dados2 = [
+                        def dadosEmpresa = [
                                 nome: "",
                                 emailCorporativo: "",
                                 cnpj: "",
                                 pais: "",
                                 estado: "",
                                 cep: "",
-                                descricao: "",
-                                "competencias desejadas": []
+                                descricao: ""
                         ]
-
-                        dados2.each { chave, valor ->
-                            if (chave == "competencias desejadas") {
-                                println("$chave:")
-                                dados2[chave] = sc.nextLine().split(", ") // Entrada separada por vírgula
-                            } else {
-                                println("$chave:")
-                                dados2[chave] = sc.nextLine()
-                            }
+                        dadosEmpresa.each { chave, valor ->
+                            println("$chave:")
+                            dadosEmpresa[chave] = sc.nextLine()
                         }
-
-                        empresa.cadastrar(dados2)
+                        empresas << new Empresa(
+                                dadosEmpresa.nome,
+                                dadosEmpresa.emailCorporativo,
+                                dadosEmpresa.cnpj,
+                                dadosEmpresa.pais,
+                                dadosEmpresa.estado,
+                                dadosEmpresa.cep,
+                                dadosEmpresa.descricao
+                        )
                         break
 
                     case 3:
-                        candidato.listarGeral()
-                        empresa.listarGeral()
+                        println("Listando Geral:")
+                        println("Candidatos:")
+                        candidatos.each { candidato ->
+                            println("Nome: ${candidato.nome}")
+                            println("Email: ${candidato.email}")
+                            println("CPF: ${candidato.cpf}")
+                            println("Idade: ${candidato.idade}")
+                            println("Estado: ${candidato.estado}")
+                            println("CEP: ${candidato.cep}")
+                            println("Descrição: ${candidato.descricao}")
+                            println("--------------------")
+                        }
+                        println("Empresas:")
+                        empresas.each { empresa ->
+                            println("Nome: ${empresa.nome}")
+                            println("Email Corporativo: ${empresa.emailCorporativo}")
+                            println("CNPJ: ${empresa.cnpj}")
+                            println("País: ${empresa.pais}")
+                            println("Estado: ${empresa.estado}")
+                            println("CEP: ${empresa.cep}")
+                            println("Descrição: ${empresa.descricao}")
+                            println("--------------------")
+                        }
                         break
 
                     case 4:
-                        candidato.listarGeral()
+                        println("Listando Candidatos:")
+                        candidatos.each { candidato ->
+                            println("Nome: ${candidato.nome}")
+                            println("Email: ${candidato.email}")
+                            println("CPF: ${candidato.cpf}")
+                            println("Idade: ${candidato.idade}")
+                            println("Estado: ${candidato.estado}")
+                            println("CEP: ${candidato.cep}")
+                            println("Descrição: ${candidato.descricao}")
+                            println("-----------------------------")
+                        }
                         break
 
                     case 5:
-                        empresa.listarGeral()
+                        println("Listando Empresas:")
+                        empresas.each { empresa ->
+                            println("Nome: ${empresa.nome}")
+                            println("Email Corporativo: ${empresa.emailCorporativo}")
+                            println("CNPJ: ${empresa.cnpj}")
+                            println("País: ${empresa.pais}")
+                            println("Estado: ${empresa.estado}")
+                            println("CEP: ${empresa.cep}")
+                            println("Descrição: ${empresa.descricao}")
+                            println("-----------------------------")
+                        }
                         break
 
                     case 6:

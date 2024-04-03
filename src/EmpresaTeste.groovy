@@ -1,18 +1,33 @@
 import org.junit.Test
+import static org.junit.Assert.assertEquals
+import static org.junit.Assert.assertNotNull
 
-class EmpresaTeste extends Empresa {
+class EmpresaTeste {
 
     @Test
-     void TesteCadastrar(){
-        def dadosEmpresa = [nome: "EmpresaTeste", emailCorporativo: "empresateste@example.com", cnpj: "123456789", pais: "Brasil", estado: "SP", cep: "12345-666", descricao: "Descrição da Empresa 1", "competencias desejadas":["Python", "Java", "Angular"]]
+    void TesteCadastrarEmpresa() {
+        // Dados da empresa para teste
+        def nomeEmpresa = "Empresa Teste"
+        def emailEmpresa = "empresa@teste.com"
+        def cnpjEmpresa = "12345678901234"
+        def paisEmpresa = "Brasil"
+        def estadoEmpresa = "SP"
+        def cepEmpresa = "12345-678"
+        def descricaoEmpresa = "Descrição da Empresa Teste"
 
-        def TesteCadastroEmpresa = new Empresa()
+        // Criar uma nova empresa
+        def empresa = new Empresa(nomeEmpresa, emailEmpresa, cnpjEmpresa, paisEmpresa, estadoEmpresa, cepEmpresa, descricaoEmpresa)
 
-        TesteCadastroEmpresa.cadastrar(dadosEmpresa)
-
-        def empresas = TesteCadastroEmpresa.getEmpresas()
-        empresas.contains(dadosEmpresa)
+        // Verificar se a empresa foi criada com sucesso
+        assertNotNull(empresa)
+        assertEquals(nomeEmpresa, empresa.nome)
+        assertEquals(emailEmpresa, empresa.emailCorporativo)
+        assertEquals(cnpjEmpresa, empresa.cnpj)
+        assertEquals(paisEmpresa, empresa.pais)
+        assertEquals(estadoEmpresa, empresa.estado)
+        assertEquals(cepEmpresa, empresa.cep)
+        assertEquals(descricaoEmpresa, empresa.descricao)
     }
-
 }
+
 
