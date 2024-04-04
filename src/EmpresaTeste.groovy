@@ -7,16 +7,16 @@ class EmpresaTeste {
     @Test
     void TesteCadastrarEmpresa() {
         // Dados da empresa para teste
-        def nomeEmpresa = "Empresa Teste"
-        def emailEmpresa = "empresa@teste.com"
-        def cnpjEmpresa = "12345678901234"
-        def paisEmpresa = "Brasil"
-        def estadoEmpresa = "SP"
-        def cepEmpresa = "12345-678"
-        def descricaoEmpresa = "Descrição da Empresa Teste"
+        String nomeEmpresa = "Empresa Teste"
+        String emailEmpresa = "empresa@teste.com"
+        String cnpjEmpresa = "12345678901234"
+        String paisEmpresa = "Brasil"
+        String cepEmpresa = "12345-678"
+        String descricaoEmpresa = "Descrição da Empresa Teste"
+        String senhaEmpresa = "@meajuda"
 
         // Criar uma nova empresa
-        def empresa = new Empresa(nomeEmpresa, emailEmpresa, cnpjEmpresa, paisEmpresa, estadoEmpresa, cepEmpresa, descricaoEmpresa)
+        def empresa = new Empresa(nomeEmpresa, emailEmpresa, cnpjEmpresa, paisEmpresa, cepEmpresa, descricaoEmpresa,senhaEmpresa)
 
         // Verificar se a empresa foi criada com sucesso
         assertNotNull(empresa)
@@ -24,9 +24,9 @@ class EmpresaTeste {
         assertEquals(emailEmpresa, empresa.emailCorporativo)
         assertEquals(cnpjEmpresa, empresa.cnpj)
         assertEquals(paisEmpresa, empresa.pais)
-        assertEquals(estadoEmpresa, empresa.estado)
         assertEquals(cepEmpresa, empresa.cep)
         assertEquals(descricaoEmpresa, empresa.descricao)
+        assertEquals(senhaEmpresa, empresa.senha)
     }
 }
 

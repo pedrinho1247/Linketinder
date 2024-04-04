@@ -10,7 +10,7 @@ class LinkTinderMain {
 
     LinkTinderMain() {
 
-        // Pré-cadastrando 5 candidatos
+        // Pré-cadastrando 5 candidatos, já inseridos no banco de dados Postgresql
 
         candidatos << new Candidato("Maria","Julio", "12/05/2005" , "maria@example.com", "123.456.789-00", "Brasil", 30, "SP", "12345-678", "Descrição do candidato 1","12@12")
 //        bancoDeDados.inserirCandidato(candidatos[0])
@@ -23,7 +23,7 @@ class LinkTinderMain {
         candidatos << new Candidato("Carla", "Ferreira","16/06/2005" , "carla@example.com", "888.999.000-11", "Brasil", 33, "BA", "24680-135", "Descrição do candidato 5", "cd@ef")
 //        bancoDeDados.inserirCandidato(candidatos[4])
 
-        // Pré-cadastrando 5 empresas
+        // Pré-cadastrando 5 empresas, já inseridos no banco de dados postgresql
 
         empresas << new Empresa("Empresa 1","empresa1@teste.com","12345678901234","SP","12345-678","Descrição da Empresa 1", "666_pedro")
 //        bancoDeDados.inserirEmpresa(empresas[0])
@@ -70,10 +70,12 @@ class LinkTinderMain {
                                 descricao: "",
                                 senha:""
                         ]
+
                         dados1.each { chave, valor ->
                             println("$chave:")
                             dados1[chave] = sc.nextLine()
                         }
+
                         candidatos << new Candidato(
                                 dados1.nome,
                                 dados1.sobrenome,
@@ -101,10 +103,12 @@ class LinkTinderMain {
                                 descricao: "",
                                 senha: ""
                         ]
+
                         dadosEmpresa.each { chave, valor ->
                             println("$chave:")
                             dadosEmpresa[chave] = sc.nextLine()
                         }
+
                         empresas << new Empresa(
                                 dadosEmpresa.nome,
                                 dadosEmpresa.emailCorporativo,
@@ -114,29 +118,34 @@ class LinkTinderMain {
                                 dadosEmpresa.descricao,
                                 dadosEmpresa.senha
                         )
+
                         bancoDeDados.inserirEmpresa(empresas[empresas.size()-1])
                         break
 
                     case 3:
+
                         println("Listando Geral:")
+                        println("--------------------")
                         println("Candidatos:")
                         candidatos.each { candidato ->
                             println("Nome: ${candidato.nome}")
+                            println("Sobrenome: ${candidato.sobrenome}")
                             println("Email: ${candidato.email}")
                             println("CPF: ${candidato.cpf}")
                             println("Idade: ${candidato.idade}")
                             println("Estado: ${candidato.estado}")
                             println("CEP: ${candidato.cep}")
                             println("Descrição: ${candidato.descricao}")
+                            println("Data de Nascimento: ${candidato.data_nascimento}")
                             println("--------------------")
                         }
+
                         println("Empresas:")
                         empresas.each { empresa ->
                             println("Nome: ${empresa.nome}")
                             println("Email Corporativo: ${empresa.emailCorporativo}")
                             println("CNPJ: ${empresa.cnpj}")
                             println("País: ${empresa.pais}")
-                            println("Estado: ${empresa.estado}")
                             println("CEP: ${empresa.cep}")
                             println("Descrição: ${empresa.descricao}")
                             println("--------------------")
@@ -147,13 +156,14 @@ class LinkTinderMain {
                         println("Listando Candidatos:")
                         candidatos.each { candidato ->
                             println("Nome: ${candidato.nome}")
+                            println("Sobrenome: ${candidato.sobrenome}")
                             println("Email: ${candidato.email}")
                             println("CPF: ${candidato.cpf}")
                             println("Idade: ${candidato.idade}")
                             println("Estado: ${candidato.estado}")
                             println("CEP: ${candidato.cep}")
                             println("Descrição: ${candidato.descricao}")
-                            println("-----------------------------")
+                            println("Data de Nascimento: ${candidato.data_nascimento}")
                         }
                         break
 
@@ -164,7 +174,6 @@ class LinkTinderMain {
                             println("Email Corporativo: ${empresa.emailCorporativo}")
                             println("CNPJ: ${empresa.cnpj}")
                             println("País: ${empresa.pais}")
-                            println("Estado: ${empresa.estado}")
                             println("CEP: ${empresa.cep}")
                             println("Descrição: ${empresa.descricao}")
                             println("-----------------------------")
