@@ -1,6 +1,3 @@
-import java.util.Scanner
-import java.util.InputMismatchException
-
 class LinkTinderMain {
 
     static void main(String[] args) {
@@ -73,7 +70,7 @@ class LinkTinderMain {
                                 descricaoCandidato,
                                 senhaCandidato
                         )
-                        NovoCandidato.AdicionarCandidato()
+                        new CandidatoController().AdicionarCandidato(NovoCandidato)
                         break
 
                     case 2:
@@ -109,24 +106,24 @@ class LinkTinderMain {
                                 senhaEmpresa
                         )
 
-                        NovaEmpresa.AdicionarEmpresa()
+                        new EmpresaController().AdicionarEmpresa(NovaEmpresa)
                         break
 
                     case 3:
                         println("Listando Geral:")
                         println("--------------------")
                         println("Candidatos:")
-                        new Candidato().ListarCandidatos()
+                        new CandidatoController().ListarCandidatos()
                         println("Empresas:")
-                        new Empresa().ListarEmpresa()
+                        new EmpresaController().ListarEmpresa()
                         break
 
                     case 4:
-                        new Candidato().ListarCandidatos()
+                        new CandidatoController().ListarCandidatos()
                         break
 
                     case 5:
-                        new Empresa().ListarEmpresa()
+                        new EmpresaController().ListarEmpresa()
                         break
 
                     case 6:
@@ -150,11 +147,11 @@ class LinkTinderMain {
                                 localVaga
                         )
 
-                        NovaVaga.AdicionarVaga()
+                        new VagasController().AdicionarVaga(NovaVaga)
                         break
 
                     case 7:
-                        new Vagas().ListarVagas();
+                        new VagasController().ListarVagas();
                         break
 
                     case 8:

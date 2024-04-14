@@ -18,7 +18,7 @@ class db {
             println("Conectando...")
             conexao = DriverManager.getConnection(url, usuario, senha)
             println("Conexão bem-sucedida!")
-            println("------------------------")
+            println("-----------------------------------")
         } catch (SQLException e) {
             println("Falha na conexão com o banco de dados: ${e.message}")
         }
@@ -28,8 +28,8 @@ class db {
         if (conexao != null) {
             try {
                 conexao.close()
-                println("------------------------")
                 println("Conexão fechada com sucesso!")
+                println("-----------------------------------")
             } catch (SQLException e) {
                 println("Erro ao fechar a conexão: ${e.message}")
             }
