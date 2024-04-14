@@ -22,6 +22,7 @@ class VagasController {
                 println("Nome da Vaga: ${rs.getString('nome')}")
                 println("Descrição: ${rs.getString('descricao')}")
                 println("Local: ${rs.getString('local')}")
+                println("------------------------------------")
             }
 
         } catch (SQLException e) {
