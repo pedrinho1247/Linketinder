@@ -37,6 +37,7 @@ class Empresa implements Pessoa {
 
             println("Listagem de Empresas:")
             while (rs.next()) {
+                println("ID: ${rs.getString('id')}")
                 println("Nome: ${rs.getString('nome')}")
                 println("Email Corporativo: ${rs.getString('email')}")
                 println("CNPJ: ${rs.getString('cnpj')}")

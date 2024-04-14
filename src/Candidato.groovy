@@ -44,6 +44,7 @@ class Candidato implements Pessoa {
 
             println("Listagem de Candidatos:")
             while (rs.next()) {
+                println("ID: ${rs.getString('id')}")
                 println("Nome: ${rs.getString('nome')}")
                 println("Sobrenome: ${rs.getString('sobrenome')}")
                 println("Data de Nascimento: ${rs.getString('data_nascimento')}")

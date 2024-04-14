@@ -1,8 +1,11 @@
+import java.util.Scanner
+import java.util.InputMismatchException
+
 class LinkTinderMain {
 
-    def sc = new Scanner(System.in)
+    static void main(String[] args) {
 
-    LinkTinderMain() {
+        Scanner sc = new Scanner(System.in)
 
         try {
             while (true) {
@@ -14,7 +17,8 @@ class LinkTinderMain {
                 println("4. Listar Candidatos")
                 println("5. Listar Empresas")
                 println("6. Adicionar vaga")
-                println("7. Sair")
+                println("7. Listar vaga")
+                println("8. Sair")
                 println("-----------------------------------------------")
                 print("OPÇÃO: ")
                 int OpcaoEscolhida = sc.nextInt()
@@ -150,6 +154,10 @@ class LinkTinderMain {
                         break
 
                     case 7:
+                        new Vagas().ListarVagas();
+                        break
+
+                    case 8:
                         println("Saindo do programa...")
                         System.exit(0)
                         break
@@ -164,7 +172,3 @@ class LinkTinderMain {
         }
     }
 }
-
-new LinkTinderMain()
-
-
