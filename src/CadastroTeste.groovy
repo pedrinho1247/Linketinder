@@ -7,7 +7,7 @@ class CadastroTeste{
 
     @Test
     void TesteCadastrarCandidato() {
-        // Dados do candidato para teste
+        // Expected
         String nome = "Maria"
         String sobrenome = "Julio"
         String data_nascimento = "12/05/2004"
@@ -20,10 +20,10 @@ class CadastroTeste{
         String descricao = "Descrição do candidato 1"
         String senha = "socorro@deus"
 
-        // Criar um novo candidato
+        // Candidato
         Candidato candidato = new Candidato(nome,sobrenome,data_nascimento, email, cpf,pais, idade, estado, cep, descricao,senha)
 
-        // Verificar se o candidato foi criado com sucesso
+        // Assert
         assertNotNull(candidato);
         assertEquals(nome, candidato.getNome());
         assertEquals(sobrenome, candidato.getSobrenome());
