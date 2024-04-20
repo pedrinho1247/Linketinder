@@ -1,3 +1,8 @@
+import main.Candidato
+import main.Empresa
+import main.Vagas
+import main.db
+
 class LinkTinderMain {
 
     def sc = new Scanner(System.in)
@@ -25,15 +30,15 @@ class LinkTinderMain {
 
         // Pré-cadastrando 5 empresas, já inseridos no banco de dados postgresql
 
-        empresas << new Empresa("Empresa 1","empresa1@teste.com","12345678901234","SP","12345-678","Descrição da Empresa 1", "666_pedro")
+        empresas << new Empresa("main.Empresa 1","empresa1@teste.com","12345678901234","SP","12345-678","Descrição da main.Empresa 1", "666_pedro")
 //        bancoDeDados.inserirEmpresa(empresas[0])
-        empresas << new Empresa("Empresa 2","empresa2@teste.com","98765432109876","RJ","54321-987","Descrição da Empresa 2","000-maria")
+        empresas << new Empresa("main.Empresa 2","empresa2@teste.com","98765432109876","RJ","54321-987","Descrição da main.Empresa 2","000-maria")
 //        bancoDeDados.inserirEmpresa(empresas[1])
-        empresas << new Empresa("Empresa 3","empresa3@teste.com","45678912345678","MG","98765-432","Descrição da Empresa 3","teste_123")
+        empresas << new Empresa("main.Empresa 3","empresa3@teste.com","45678912345678","MG","98765-432","Descrição da main.Empresa 3","teste_123")
 //        bancoDeDados.inserirEmpresa(empresas[2])
-        empresas << new Empresa("Empresa 4","empresa4@teste.com","32165498765432","BA","87654-321","Descrição da Empresa 4","naoseinada")
+        empresas << new Empresa("main.Empresa 4","empresa4@teste.com","32165498765432","BA","87654-321","Descrição da main.Empresa 4","naoseinada")
 //        bancoDeDados.inserirEmpresa(empresas[3])
-        empresas << new Empresa("Empresa 5","empresa5@teste.com","78912345678901","PR","76543-210","Descrição da Empresa 5","socorro123")
+        empresas << new Empresa("main.Empresa 5","empresa5@teste.com","78912345678901","PR","76543-210","Descrição da main.Empresa 5","socorro123")
 //        bancoDeDados.inserirEmpresa(empresas[4])
 
         // Inicializando o programa
@@ -42,8 +47,8 @@ class LinkTinderMain {
             while (true) {
                 println("O que deseja realizar? Escolha uma opção: ")
                 println("-----------------------------------------------")
-                println("1. Adicionar um Candidato")
-                println("2. Adicionar uma Empresa")
+                println("1. Adicionar um main.Candidato")
+                println("2. Adicionar uma main.Empresa")
                 println("3. Listar Geral")
                 println("4. Listar Candidatos")
                 println("5. Listar Empresas")

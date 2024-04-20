@@ -1,3 +1,5 @@
+import main.Pessoa
+
 class Empresa implements Pessoa {
 
     String nome

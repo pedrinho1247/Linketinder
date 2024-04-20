@@ -1,3 +1,7 @@
+package test
+
+import main.Candidato
+import org.junit.Assert
 import org.junit.Test
 import static org.junit.Assert.assertEquals
 import static org.junit.Assert.assertNotNull
@@ -20,7 +24,7 @@ class CadastroTeste{
         String descricao = "Descrição do candidato 1"
         String senha = "socorro@deus"
 
-        // Candidato
+        // main.Candidato
         Candidato candidato = new Candidato(nome,sobrenome,data_nascimento, email, cpf,pais, idade, estado, cep, descricao,senha)
 
         // Assert
@@ -31,7 +35,7 @@ class CadastroTeste{
         assertEquals(email, candidato.getEmail());
         assertEquals(cpf, candidato.getCpf());
         assertEquals(pais, candidato.getPais());
-        assertEquals(idade, candidato.getIdade());
+        Assert.assertEquals(idade, candidato.getIdade());
         assertEquals(estado, candidato.getEstado());
         assertEquals(cep, candidato.getCep());
         assertEquals(descricao, candidato.getDescricao());

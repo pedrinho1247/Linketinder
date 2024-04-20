@@ -1,3 +1,5 @@
+package main
+
 class Vagas {
     int id_empresa
     String nome

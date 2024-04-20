@@ -1,3 +1,7 @@
+import main.Candidato
+import main.Empresa
+import main.Vagas
+
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.PreparedStatement
@@ -52,7 +56,7 @@ class db {
             stmt.setString(11, candidato.getSenha())
 
             stmt.executeUpdate()
-            println("Candidato inserido com sucesso!")
+            println("main.Candidato inserido com sucesso!")
         } catch (SQLException e) {
             println("Erro ao inserir candidato: ${e.getMessage()}")
         }
@@ -70,7 +74,7 @@ class db {
             stmt.setString(6, empresa.getSenha())
             stmt.executeUpdate()
 
-            println("Empresa inserida com sucesso!")
+            println("main.Empresa inserida com sucesso!")
         } catch (SQLException e) {
             println("Erro ao inserir empresa: ${e.getMessage()}")
         }

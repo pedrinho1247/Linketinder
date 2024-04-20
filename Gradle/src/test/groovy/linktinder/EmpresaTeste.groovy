@@ -1,3 +1,4 @@
+import main.Empresa
 import org.junit.Test
 import static org.junit.Assert.assertEquals
 import static org.junit.Assert.assertNotNull
@@ -7,12 +8,12 @@ class EmpresaTeste {
     @Test
     void TesteCadastrarEmpresa() {
         // Dados da empresa para teste
-        String nomeEmpresa = "Empresa Teste"
+        String nomeEmpresa = "main.Empresa Teste"
         String emailEmpresa = "empresa@teste.com"
         String cnpjEmpresa = "12345678901234"
         String paisEmpresa = "Brasil"
         String cepEmpresa = "12345-678"
-        String descricaoEmpresa = "Descrição da Empresa Teste"
+        String descricaoEmpresa = "Descrição da main.Empresa Teste"
         String senhaEmpresa = "@meajuda"
 
         // Criar uma nova empresa

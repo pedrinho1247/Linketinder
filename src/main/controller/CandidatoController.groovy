@@ -1,3 +1,9 @@
+package main.controller
+
+import main.Candidato
+import main.db
+import main.instancias.Instancias
+
 import java.sql.Connection
 import java.sql.PreparedStatement
 import java.sql.ResultSet
@@ -39,25 +45,27 @@ class CandidatoController {
         }
     }
 
-    void AdicionarCandidato(Candidato candidato) {
+    void AdicionarCandidato(Candidato novoCandidato) {
+
+
         db bancoDeDados = new db()
         Connection conexao = bancoDeDados.getConexao()
 
-        String sql = "INSERT INTO candidatos (nome,sobrenome,data_nascimento, email, cpf,pais,idade, estado, cep, descricao,senha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+        String sql = "INSERT INTO candidatos (nome, sobrenome, data_nascimento, email, cpf, pais, idade, estado, cep, descricao, senha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
         try {
             PreparedStatement stmt = conexao.prepareStatement(sql)
-            stmt.setString(1, candidato.getNome())
-            stmt.setString(2, candidato.getSobrenome())
-            stmt.setString(3, candidato.getData_nascimento())
-            stmt.setString(4, candidato.getEmail())
-            stmt.setString(5, candidato.getCpf())
-            stmt.setString(6, candidato.getPais())
-            stmt.setInt(7, candidato.getIdade())
-            stmt.setString(8, candidato.getEstado())
-            stmt.setString(9, candidato.getCep())
-            stmt.setString(10, candidato.getDescricao())
-            stmt.setString(11, candidato.getSenha())
+            stmt.setString(1, novoCandidato.getNome())
+            stmt.setString(2, novoCandidato.getSobrenome())
+            stmt.setString(3, novoCandidato.getData_nascimento())
+            stmt.setString(4, novoCandidato.getEmail())
+            stmt.setString(5, novoCandidato.getCpf())
+            stmt.setString(6, novoCandidato.getPais())
+            stmt.setInt(7, novoCandidato.getIdade())
+            stmt.setString(8, novoCandidato.getEstado())
+            stmt.setString(9, novoCandidato.getCep())
+            stmt.setString(10, novoCandidato.getDescricao())
+            stmt.setString(11, novoCandidato.getSenha())
 
             stmt.executeUpdate()
             println("Candidato inserido com sucesso!")
@@ -67,5 +75,4 @@ class CandidatoController {
             bancoDeDados.fecharConexao()
         }
     }
-
 }

@@ -1,3 +1,5 @@
+package main
+
 class Empresa implements Pessoa {
 
     String nome
