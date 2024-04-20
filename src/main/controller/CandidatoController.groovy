@@ -1,8 +1,7 @@
 package main.controller
 
 import main.Candidato
-import main.db
-import main.instancias.Instancias
+import main.db.db
 
 import java.sql.Connection
 import java.sql.PreparedStatement

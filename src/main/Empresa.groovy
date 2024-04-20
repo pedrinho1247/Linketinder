@@ -1,6 +1,6 @@
 package main
 
-class Empresa implements Pessoa {
+class Empresa{
 
     String nome
     String emailCorporativo

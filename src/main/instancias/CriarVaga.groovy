@@ -6,7 +6,7 @@ import static java.sql.DriverManager.println
 
 class CriarVaga implements Instancias {
     @Override
-    Instancias criarInstancia() {
+     criarInstancia() {
         Scanner sc = new Scanner(System.in)
 
         println("Insira o id da empresa:")
@@ -28,6 +28,6 @@ class CriarVaga implements Instancias {
                 localVaga
         )
 
-        return NovaVaga as Instancias
+        return NovaVaga
     }
 }

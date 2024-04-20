@@ -1,7 +1,7 @@
 package main.controller
 
 import main.Empresa
-import main.db
+import main.db.db
 
 import java.sql.Connection
 import java.sql.PreparedStatement

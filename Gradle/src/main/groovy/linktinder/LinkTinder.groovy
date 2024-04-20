@@ -1,7 +1,7 @@
 import main.Candidato
 import main.Empresa
 import main.Vagas
-import main.db
+import main.db.db
 
 class LinkTinderMain {
 

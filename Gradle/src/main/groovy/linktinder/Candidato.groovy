@@ -1,5 +1,3 @@
-import main.Pessoa
-
 class Candidato implements Pessoa {
 
     String nome

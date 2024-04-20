@@ -5,6 +5,7 @@ import main.controller.EmpresaController
 import main.controller.VagasController
 import main.instancias.CriarCandidato
 import main.instancias.CriarEmpresa
+import main.instancias.CriarVaga
 import main.instancias.Instancias
 
 
@@ -66,8 +67,8 @@ class LinkTinderMain {
 
                     case 6:
 
-                        criador = new CriarEmpresa()
-                        Empresa NovaVaga = criador.criarInstancia()
+                        criador = new CriarVaga()
+                        Vagas NovaVaga = criador.criarInstancia()
                         new VagasController().AdicionarVaga(NovaVaga)
                         break
 

@@ -1,6 +1,6 @@
 package main
 
-class Candidato implements Pessoa {
+class Candidato{
 
     String nome
     String sobrenome
