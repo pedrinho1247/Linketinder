@@ -10,10 +10,11 @@ import java.sql.SQLException
 
 class EmpresaController {
 
+    protected String url = "jdbc:postgresql://localhost:5432/Linketinder"
+    protected String user = "pedro"
+    protected String password = "Cap1vara_@2025"
+
     void ListarEmpresas() {
-        String url = "jdbc:postgresql://localhost:5432/Linketinder"
-        String user = "pedro"
-        String password = "Cap1vara_@2025"
 
         String sql = "SELECT * FROM empresas"
 
@@ -44,9 +45,6 @@ class EmpresaController {
     }
 
     void AdicionarEmpresa(Empresa empresa) {
-        String url = "jdbc:postgresql://localhost:5432/Linketinder"
-        String user = "pedro"
-        String password = "Cap1vara_@2025"
 
         String sql = "INSERT INTO empresas (nome, email, cnpj, pais, cep, descricao, senha) VALUES (?, ?, ?, ?, ?, ?, ?)"
 

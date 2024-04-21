@@ -10,11 +10,11 @@ import java.sql.ResultSet
 import java.sql.SQLException
 
 class VagasController {
+    protected String url = "jdbc:postgresql://localhost:5432/Linketinder"
+    protected String user = "pedro"
+    protected String password = "Cap1vara_@2025"
 
     void ListarVagas() {
-        String url = "jdbc:postgresql://localhost:5432/Linketinder"
-        String user = "pedro"
-        String password = "Cap1vara_@2025"
 
         String sql = "SELECT * FROM vagas"
 
