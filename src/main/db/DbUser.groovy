@@ -1,5 +1,6 @@
 package main.db
 
+import java.sql.ResultSet
 import java.sql.SQLException
 
 class DbUser {
@@ -9,11 +10,16 @@ class DbUser {
         this.connection = connection
     }
 
-    void executeQuery(String query) {
+    ResultSet executeQuery(String query) {
         try {
-            connection.execute(query)
+            return connection.execute(query)
         } catch (SQLException e) {
-            println("Erro ao executar a consulta: $e.message")
+            println("Erro ao executar a consulta: ${e.message}")
+            return null
         }
+    }
+
+    ResultSet getResultSet() {
+        return connection.getResultSet()
     }
 }

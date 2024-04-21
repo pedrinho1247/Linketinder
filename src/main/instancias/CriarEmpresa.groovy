@@ -2,8 +2,6 @@ package main.instancias
 
 import main.Empresa
 
-import static java.sql.DriverManager.println
-
 class CriarEmpresa implements Instancias {
 
     @Override

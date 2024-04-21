@@ -2,8 +2,6 @@ package main.instancias
 
 import main.Vagas
 
-import static java.sql.DriverManager.println
-
 class CriarVaga implements Instancias {
     @Override
      criarInstancia() {

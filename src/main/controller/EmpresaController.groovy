@@ -1,26 +1,31 @@
 package main.controller
 
 import main.Empresa
-import main.db.db
-
-import java.sql.Connection
+import main.db.ConnectionFactory
+import main.db.DatabaseConnection
+import main.db.DbUser
 import java.sql.PreparedStatement
 import java.sql.ResultSet
 import java.sql.SQLException
 
 class EmpresaController {
 
-    void ListarEmpresa() {
+    void ListarEmpresas() {
+        String url = "jdbc:postgresql://localhost:5432/Linketinder"
+        String user = "pedro"
+        String password = "Cap1vara_@2025"
 
-        db bancoDeDados = new db()
-        Connection conexao = bancoDeDados.getConexao()
+        String sql = "SELECT * FROM empresas"
 
-        String sql = "SELECT * FROM empresas;"
         try {
-            PreparedStatement stmt = conexao.prepareStatement(sql)
-            ResultSet rs = stmt.executeQuery()
+            DatabaseConnection postgresConnection = ConnectionFactory.createConnection("postgres", url, user, password)
+            DbUser dbuser = new DbUser(postgresConnection)
+
+            dbuser.executeQuery(sql)
+            ResultSet rs = dbuser.getResultSet()
 
             println("Listagem de Empresas:")
+
             while (rs.next()) {
                 println("ID: ${rs.getString('id')}")
                 println("Nome: ${rs.getString('nome')}")
@@ -31,37 +36,36 @@ class EmpresaController {
                 println("Descrição: ${rs.getString('descricao')}")
                 println("------------------------------------")
             }
-
         } catch (SQLException e) {
             println("Erro ao listar empresas: ${e.message}")
-
         } finally {
-            bancoDeDados.fecharConexao()
+
         }
     }
 
     void AdicionarEmpresa(Empresa empresa) {
-        db bancoDeDados = new db()
-        Connection conexao = bancoDeDados.getConexao()
+        String url = "jdbc:postgresql://localhost:5432/Linketinder"
+        String user = "pedro"
+        String password = "Cap1vara_@2025"
 
-        String sql = "INSERT INTO empresas (nome, email, cnpj,cep, descricao,senha) VALUES (?, ?, ?, ?, ?, ?)"
+        String sql = "INSERT INTO empresas (nome, email, cnpj, pais, cep, descricao, senha) VALUES (?, ?, ?, ?, ?, ?, ?)"
+
         try {
-            PreparedStatement stmt = conexao.prepareStatement(sql)
+            DatabaseConnection postgresConnection = ConnectionFactory.createConnection("postgres", url, user, password)
+            PreparedStatement stmt = postgresConnection.getConnection().prepareStatement(sql)
+
             stmt.setString(1, empresa.getNome())
             stmt.setString(2, empresa.getEmailCorporativo())
             stmt.setString(3, empresa.getCnpj())
-            stmt.setString(4, empresa.getCep())
-            stmt.setString(5, empresa.getDescricao())
-            stmt.setString(6, empresa.getSenha())
+            stmt.setString(4, empresa.getPais())
+            stmt.setString(5, empresa.getCep())
+            stmt.setString(6, empresa.getDescricao())
+            stmt.setString(7, empresa.getSenha())
 
             stmt.executeUpdate()
-
-            println("main.Empresa inserida com sucesso!")
+            println("Empresa inserida com sucesso!")
         } catch (SQLException e) {
             println("Erro ao inserir empresa: ${e.getMessage()}")
-        } finally {
-            bancoDeDados.fecharConexao()
         }
     }
-
 }

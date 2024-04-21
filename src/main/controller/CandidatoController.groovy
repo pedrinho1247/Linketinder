@@ -1,9 +1,9 @@
 package main.controller
 
 import main.Candidato
-import main.db.db
-
-import java.sql.Connection
+import main.db.ConnectionFactory
+import main.db.DatabaseConnection
+import main.db.DbUser
 import java.sql.PreparedStatement
 import java.sql.ResultSet
 import java.sql.SQLException
@@ -11,15 +11,21 @@ import java.sql.SQLException
 class CandidatoController {
 
     void ListarCandidatos() {
-        db bancoDeDados = new db()
-        Connection conexao = bancoDeDados.getConexao()
+        String url = "jdbc:postgresql://localhost:5432/Linketinder"
+        String user = "pedro"
+        String password = "Cap1vara_@2025"
 
         String sql = "SELECT * FROM candidatos"
+
         try {
-            PreparedStatement stmt = conexao.prepareStatement(sql)
-            ResultSet rs = stmt.executeQuery()
+            DatabaseConnection postgresConnection = ConnectionFactory.createConnection("postgres", url, user, password)
+            DbUser dbuser = new DbUser(postgresConnection)
+
+            dbuser.executeQuery(sql)
+            ResultSet rs = dbuser.getResultSet()
 
             println("Listagem de Candidatos:")
+
             while (rs.next()) {
                 println("ID: ${rs.getString('id')}")
                 println("Nome: ${rs.getString('nome')}")
@@ -35,25 +41,24 @@ class CandidatoController {
                 println("Senha: ${rs.getString('senha')}")
                 println("------------------------------------")
             }
-
         } catch (SQLException e) {
             println("Erro ao listar candidatos: ${e.message}")
-
         } finally {
-            bancoDeDados.fecharConexao()
+
         }
     }
 
     void AdicionarCandidato(Candidato novoCandidato) {
-
-
-        db bancoDeDados = new db()
-        Connection conexao = bancoDeDados.getConexao()
+        String url = "jdbc:postgresql://localhost:5432/Linketinder"
+        String user = "pedro"
+        String password = "Cap1vara_@2025"
 
         String sql = "INSERT INTO candidatos (nome, sobrenome, data_nascimento, email, cpf, pais, idade, estado, cep, descricao, senha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
         try {
-            PreparedStatement stmt = conexao.prepareStatement(sql)
+            DatabaseConnection postgresConnection = ConnectionFactory.createConnection("postgres", url, user, password)
+            PreparedStatement stmt = postgresConnection.getConnection().prepareStatement(sql)
+
             stmt.setString(1, novoCandidato.getNome())
             stmt.setString(2, novoCandidato.getSobrenome())
             stmt.setString(3, novoCandidato.getData_nascimento())
@@ -70,8 +75,7 @@ class CandidatoController {
             println("Candidato inserido com sucesso!")
         } catch (SQLException e) {
             println("Erro ao inserir candidato: ${e.getMessage()}")
-        } finally {
-            bancoDeDados.fecharConexao()
         }
     }
+
 }

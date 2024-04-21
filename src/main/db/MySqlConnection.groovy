@@ -14,6 +14,7 @@ class MySqlConnection implements DatabaseConnection{
     @Override
     void execute(String sql) throws SQLException {
         println("Executando SQL no MySQL: $sql")
-
+        //Implemnta a lógica do MYSQL...
+        //Building...
     }
 }

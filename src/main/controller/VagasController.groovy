@@ -1,9 +1,10 @@
 package main.controller
 
 import main.Vagas
-import main.db.db
+import main.db.ConnectionFactory
+import main.db.DatabaseConnection
+import main.db.DbUser
 
-import java.sql.Connection
 import java.sql.PreparedStatement
 import java.sql.ResultSet
 import java.sql.SQLException
@@ -11,52 +12,56 @@ import java.sql.SQLException
 class VagasController {
 
     void ListarVagas() {
+        String url = "jdbc:postgresql://localhost:5432/Linketinder"
+        String user = "pedro"
+        String password = "Cap1vara_@2025"
 
-        db bancoDeDados = new db()
-        Connection conexao = bancoDeDados.getConexao()
+        String sql = "SELECT * FROM vagas"
 
-        String sql = "SELECT * FROM vagas;"
         try {
-            PreparedStatement stmt = conexao.prepareStatement(sql)
-            ResultSet rs = stmt.executeQuery()
+            DatabaseConnection postgresConnection = ConnectionFactory.createConnection("postgres", url, user, password)
+            DbUser dbuser = new DbUser(postgresConnection)
 
-            println("Listagem de Empresas:")
+            dbuser.executeQuery(sql)
+            ResultSet rs = dbuser.getResultSet()
+
+            println("Listagem de Vagas:")
+
             while (rs.next()) {
                 println("ID: ${rs.getString('id')}")
-                println("ID da main.Empresa: ${rs.getString('id_empresa')}")
+                println("ID da Empresa: ${rs.getString('id_empresa')}")
                 println("Nome da Vaga: ${rs.getString('nome')}")
                 println("Descrição: ${rs.getString('descricao')}")
                 println("Local: ${rs.getString('local')}")
                 println("------------------------------------")
             }
-
         } catch (SQLException e) {
             println("Erro ao listar vagas: ${e.message}")
-
         } finally {
-            bancoDeDados.fecharConexao()
+
         }
     }
 
-    void AdicionarVaga(Vagas vaga){
-        db bancoDeDados = new db()
-        Connection conexao = bancoDeDados.getConexao()
+    void AdicionarVaga(Vagas vaga) {
+        String url = "jdbc:postgresql://localhost:5432/Linketinder"
+        String user = "pedro"
+        String password = "Cap1vara_@2025"
 
-        String sql = "INSERT INTO vagas (id_empresa, nome, descricao,local) VALUES (?, ?, ?, ?)"
+        String sql = "INSERT INTO vagas (id_empresa, nome, descricao, local) VALUES (?, ?, ?, ?)"
+
         try {
-            PreparedStatement stmt = conexao.prepareStatement(sql)
+            DatabaseConnection postgresConnection = ConnectionFactory.createConnection("postgres", url, user, password)
+            PreparedStatement stmt = postgresConnection.getConnection().prepareStatement(sql)
+
             stmt.setInt(1, vaga.getId_empresa())
             stmt.setString(2, vaga.getNome())
             stmt.setString(3, vaga.getDescricao())
             stmt.setString(4, vaga.getLocal())
 
             stmt.executeUpdate()
-
             println("Vaga inserida com sucesso!")
-
         } catch (SQLException e) {
-            println("Erro ao inserir empresa: ${e.getMessage()}")
+            println("Erro ao inserir vaga: ${e.getMessage()}")
         }
     }
-
 }

@@ -54,7 +54,7 @@ class LinkTinderMain {
                         println("Candidatos:")
                         new CandidatoController().ListarCandidatos()
                         println("Empresas:")
-                        new EmpresaController().ListarEmpresa()
+                        new EmpresaController().ListarEmpresas()
                         break
 
                     case 4:
@@ -62,7 +62,7 @@ class LinkTinderMain {
                         break
 
                     case 5:
-                        new EmpresaController().ListarEmpresa()
+                        new EmpresaController().ListarEmpresas()
                         break
 
                     case 6:
