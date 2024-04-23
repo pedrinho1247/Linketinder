@@ -1,12 +1,16 @@
-package main
+package main.controller
 
-import main.controller.CandidatoController
-import main.controller.EmpresaController
-import main.controller.VagasController
-import main.instancias.CriarCandidato
-import main.instancias.CriarEmpresa
-import main.instancias.CriarVaga
-import main.instancias.Instancias
+import main.DAO.CandidatoDAO
+import main.DAO.EmpresaDAO
+import main.DAO.VagasDAO
+import main.model.Vagas
+import main.view.CriarCandidato
+import main.view.CriarEmpresa
+import main.view.CriarVaga
+import main.view.Instancias
+import main.model.Candidato
+import main.model.Empresa
+import main.view.OpcaoEscolhida
 
 
 class LinkTinderMain {
@@ -18,62 +22,51 @@ class LinkTinderMain {
 
         try {
             while (true) {
-                println("O que deseja realizar? Escolha uma opção: ")
-                println("-----------------------------------------------")
-                println("1. Adicionar Candidato")
-                println("2. Adicionar uma Empresa")
-                println("3. Listar Geral")
-                println("4. Listar Candidatos")
-                println("5. Listar Empresas")
-                println("6. Adicionar vaga")
-                println("7. Listar vaga")
-                println("8. Sair")
-                println("-----------------------------------------------")
-                print("OPÇÃO: ")
-                int OpcaoEscolhida = sc.nextInt()
-                sc.nextLine()
 
-                switch (OpcaoEscolhida) {
+                OpcaoEscolhida opcao = new OpcaoEscolhida()
+                int Escolha = opcao.InterfaceOpcao()
+
+                switch (Escolha) {
 
                     case 1:
 
                         criador = new CriarCandidato()
                         Candidato novoCandidato = criador.criarInstancia()
-                        new CandidatoController().AdicionarCandidato(novoCandidato)
+                        new CandidatoDAO().AdicionarCandidato(novoCandidato)
                         break
 
                     case 2:
                         criador = new CriarEmpresa()
                         Empresa NovaEmpresa = criador.criarInstancia()
-                        new EmpresaController().AdicionarEmpresa(NovaEmpresa)
+                        new EmpresaDAO().AdicionarEmpresa(NovaEmpresa)
                         break
 
                     case 3:
                         println("Listando Geral:")
                         println("--------------------")
                         println("Candidatos:")
-                        new CandidatoController().ListarCandidatos()
+                        new CandidatoDAO().ListarCandidatos()
                         println("Empresas:")
-                        new EmpresaController().ListarEmpresas()
+                        new EmpresaDAO().ListarEmpresas()
                         break
 
                     case 4:
-                        new CandidatoController().ListarCandidatos()
+                        new CandidatoDAO().ListarCandidatos()
                         break
 
                     case 5:
-                        new EmpresaController().ListarEmpresas()
+                        new EmpresaDAO().ListarEmpresas()
                         break
 
                     case 6:
 
                         criador = new CriarVaga()
                         Vagas NovaVaga = criador.criarInstancia()
-                        new VagasController().AdicionarVaga(NovaVaga)
+                        new VagasDAO().AdicionarVaga(NovaVaga)
                         break
 
                     case 7:
-                        new VagasController().ListarVagas();
+                        new VagasDAO().ListarVagas()
                         break
 
                     case 8:

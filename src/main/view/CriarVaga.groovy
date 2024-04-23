@@ -1,6 +1,6 @@
-package main.instancias
+package main.view
 
-import main.Vagas
+import main.model.Vagas
 
 class CriarVaga implements Instancias {
     @Override

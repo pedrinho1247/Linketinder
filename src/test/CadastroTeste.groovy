@@ -1,6 +1,6 @@
 package test
 
-import main.Candidato
+import main.model.Candidato
 import org.junit.Assert
 import org.junit.Test
 import static org.junit.Assert.assertEquals
@@ -24,7 +24,7 @@ class CadastroTeste{
         String descricao = "Descrição do candidato 1"
         String senha = "socorro@deus"
 
-        // main.Candidato
+        // main.model.Candidato
         Candidato candidato = new Candidato(nome,sobrenome,data_nascimento, email, cpf,pais, idade, estado, cep, descricao,senha)
 
         // Assert

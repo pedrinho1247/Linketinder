@@ -1,15 +1,15 @@
-package main.controller
+package main.DAO
 
-import main.Vagas
-import main.db.ConnectionFactory
-import main.db.DatabaseConnection
-import main.db.DbUser
+import main.model.Vagas
+import main.model.db.ConnectionFactory
+import main.model.db.DatabaseConnection
+import main.model.db.DbUser
 
 import java.sql.PreparedStatement
 import java.sql.ResultSet
 import java.sql.SQLException
 
-class VagasController {
+class VagasDAO {
     protected String url = "jdbc:postgresql://localhost:5432/Linketinder"
     protected String user = "pedro"
     protected String password = "Cap1vara_@2025"

@@ -1,6 +1,7 @@
-package main.instancias
+package main.view
 
-import main.Empresa
+
+import main.model.Empresa
 
 class CriarEmpresa implements Instancias {
 

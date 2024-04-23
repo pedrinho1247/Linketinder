@@ -1,4 +1,4 @@
-package main.instancias
+package main.view
 
 interface Instancias {
     criarInstancia()

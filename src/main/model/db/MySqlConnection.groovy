@@ -1,4 +1,4 @@
-package main.db
+package main.model.db
 
 import java.sql.Connection
 import java.sql.SQLException

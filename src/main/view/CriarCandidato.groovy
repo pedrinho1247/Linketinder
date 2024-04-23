@@ -1,6 +1,7 @@
-package main.instancias
+package main.view
 
-import main.Candidato
+
+import main.model.Candidato
 
 class CriarCandidato implements Instancias {
 

@@ -8,8 +8,8 @@ Sendo assim foi necessario desenvolver cadastrar 5 empresas e 5 canditatos e pod
 
 ## Funcionalidades
 
-- Adicionar main.Empresa / main.Candidato 
-- Listar main.Empresa / main.Candidato
+- Adicionar main.model.Empresa / main.model.Candidato 
+- Listar main.model.Empresa / main.model.Candidato
 - Listar Tudo
 
 

@@ -1,14 +1,14 @@
-package main.controller
+package main.DAO
 
-import main.Empresa
-import main.db.ConnectionFactory
-import main.db.DatabaseConnection
-import main.db.DbUser
+import main.model.Empresa
+import main.model.db.ConnectionFactory
+import main.model.db.DatabaseConnection
+import main.model.db.DbUser
 import java.sql.PreparedStatement
 import java.sql.ResultSet
 import java.sql.SQLException
 
-class EmpresaController {
+class EmpresaDAO {
 
     protected String url = "jdbc:postgresql://localhost:5432/Linketinder"
     protected String user = "pedro"
