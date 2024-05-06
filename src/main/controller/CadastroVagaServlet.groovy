@@ -1,8 +1,6 @@
 package main.controller
 
-import main.DAO.EmpresaDAO
 import main.DAO.VagasDAO
-import main.model.Empresa
 import main.model.Vagas
 
 import javax.servlet.ServletException
